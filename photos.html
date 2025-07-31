@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photos - AD PRISM Portfolio</title>
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; background:linear-gradient(to bottom right,#006838,#10B981); color:white; text-align:center; padding:20px; }
+    a.home-link { color:white; font-weight:bold; text-decoration:none; font-size:1.2rem; margin-bottom:20px; display:inline-block; }
+    a.home-link:hover { color:#10B981; }
+    .gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
+    .gallery img { width:250px; height:160px; object-fit:cover; border-radius:12px; cursor:pointer; box-shadow:0 0 12px rgba(0,0,0,0.4); transition:transform 0.3s ease; }
+    .gallery img:hover { transform:scale(1.05); box-shadow:0 0 20px #10B981; }
+    #lightbox { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:1000; }
+    #lightbox img { max-width:90%; max-height:80vh; border-radius:12px; }
+    #lightbox:target { display:flex; }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="home-link">&larr; Back to Home</a>
+
+<h1>Photo Gallery</h1>
+
+<div class="gallery">
+  <a href="#img1"><img src="images/photo1.jpg" alt="Photo 1" /></a>
+  <a href="#img2"><img src="images/photo2.jpg" alt="Photo 2" /></a>
+  <a href="#img3"><img src="images/photo3.jpg" alt="Photo 3" /></a>
+  <a href="#img4"><img src="images/extra1.jpg" alt="Photo 4" /></a>
+  <a href="#img5"><img src="images/extra2.jpg" alt="Photo 5" /></a>
+  <a href="#img6"><img src="images/extra3.jpg" alt="Photo 6" /></a>
+   <a href="#img7"><img src="images/extra4.jpg" alt="Photo 7" /></a>
+  <a href="#img8"><img src="images/extra5.jpg" alt="Photo 8" /></a>
+  <a href="#img9"><img src="images/extra6.jpg" alt="Photo 9" /></a>
+  <a href="#img10"><img src="images/extra7.jpg" alt="Photo 10" /></a>
+  <a href="#img11"><img src="images/extra8.jpg" alt="Photo 11" /></a>
+  <a href="#img12"><img src="images/extra9.jpg" alt="Photo 12" /></a>
+    <a href="#img13"><img src="images/extra10.jpg" alt="Photo 13" /></a>
+   <a href="#img14"><img src="images/extra11.jpg" alt="Photo 14" /></a>
+  <a href="#img15"><img src="images/extra12.jpg" alt="Photo 15" /></a>
+  <a href="#img16"><img src="images/extra13.jpg" alt="Photo 16" /></a>
+   <a href="#img17"><img src="images/extra14.jpg" alt="Photo 17" /></a>
+  <a href="#img18"><img src="images/extra15.jpg" alt="Photo 18" /></a>
+  <a href="#img19"><img src="images/extra19.jpg" alt="Photo 19" /></a>
+  <a href="#img20"><img src="images/extra17.jpg" alt="Photo 20" /></a>
+ 
+</div>
+
+<div id="lightbox" onclick="location.hash=''">
+  <img src="" alt="Enlarged photo" id="lightbox-img" />
+</div>
+
+<script>
+  const links = document.querySelectorAll('.gallery a');
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      lbImg.src = link.querySelector('img').src;
+      location.hash = link.hash;
+      lightbox.style.display = 'flex';
+    });
+  });
+  lightbox.addEventListener('click', () => { lightbox.style.display = 'none'; location.hash = ''; });
+</script>
+
+</body>
+</html>
